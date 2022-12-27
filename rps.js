@@ -1,7 +1,10 @@
+let userWins = 0; 
+let computerWins = 0;
+
 function getComputerChoice() { 
     let computeRPS = Math.floor(Math.random() * 3); 
     let computedRPS;
-    console.log(computeRPS) 
+    
     switch(computeRPS) { 
         case 0:
         computedRPS = "rock"
@@ -15,34 +18,44 @@ function getComputerChoice() {
         computedRPS = "scissors"
         break;
     }
-    console.log(computedRPS);
+
     return computedRPS;
 }
 
-
 function getUserChoice() { 
     let computeUserRPS = prompt("Enter rock paper or scissors."); 
-    console.log(computeUserRPS);
-    return computeUserRPS;
+    computeUserRPS = computeUserRPS.toLowerCase(); 
+    
+    if(computeUserRPS === "rock" || computeUserRPS === "scissors" || computeUserRPS === "paper") { 
+       return computeUserRPS;
+    } else { 
+    console.log("Please enter a valid input: 'rock', 'paper', or 'scissors'"); 
+    getUserChoice();
+    }
 }
 
 function startGameRPS() { 
     let computerChoice = getComputerChoice(); 
     let userChoice = getUserChoice(); 
+
     console.log(rpsMatchups(computerChoice, userChoice)); 
 }
 
 function rpsMatchups(computerChoice, userChoice) { 
-
     if(computerChoice === "rock"){ 
         switch(userChoice){ 
-            case "rock": return ("Draw! " + computerChoice + " draws with " + userChoice);
+            case "rock": 
+                return ("Draw! " + computerChoice + " draws with " + userChoice);
             break; 
 
-            case "scissors": return ("You win! " + userChoice + " beats " + computerChoice);
+            case "scissors": 
+                computerWins++;
+                return ("You lose! " + computerChoice + " beats " + userChoice);
             break; 
             
-            case "paper": return ("You lose! " + computerChoice + " beats " + userChoice);
+            case "paper":
+                userWins++;
+                return ("You win! " + userChoice + " beats " + computerChoice);
             break;
             default: 
             console.log("Incorrect input!");
@@ -51,13 +64,18 @@ function rpsMatchups(computerChoice, userChoice) {
 
     if(computerChoice === "paper"){ 
         switch(userChoice){ 
-            case "rock": return ("You win! " + userChoice + " beats " + computerChoice);
+            case "rock": 
+            userWins++;
+            return ("You win! " + userChoice + " beats " + computerChoice);
             break; 
 
-            case "paper": return ("Draw! " + computerChoice + " draws with " + userChoice);
+            case "paper": 
+            return ("Draw! " + computerChoice + " draws with " + userChoice);
             break; 
             
-            case "scissors": return ("You lose! " + computerChoice + " beats " + userChoice);
+            case "scissors":
+                computerWins++;
+                return ("You lose! " + computerChoice + " beats " + userChoice);
             break;
             default: 
             console.log("Incorrect input!");
@@ -66,10 +84,14 @@ function rpsMatchups(computerChoice, userChoice) {
 
     if(computerChoice === "scissors"){ 
         switch(userChoice){ 
-            case "rock": return ("You win! " + userChoice + " beats " + computerChoice);
+            case "rock": 
+            userWins++;
+            return ("You win! " + userChoice + " beats " + computerChoice); 
             break; 
 
-            case "paper": return ("You lose! " + computerChoice + " beats " + userChoice);
+            case "paper":
+                computerWins++;
+                return ("You lose! " + computerChoice + " beats " + userChoice);
             
             case "scissors": return ("Draw! " + computerChoice + " draws with " + userChoice);
 
@@ -78,16 +100,23 @@ function rpsMatchups(computerChoice, userChoice) {
             console.log("Incorrect input!");
         }
     }
-    
 }
 
-// function gameEnd(computerChoice, userChoice, result){
-//     if((result === "draw"){
-//         console.log("Draw! " + computerChoice + " ties with " + userChoice);
-//     } else if(result === "win")
-//     }
-//         console.log(`$result! `) 
+function game(){ 
+    let gameCount = 0; 
+  
+    while(gameCount < 5){ 
+        startGameRPS(); 
+        gameCount++; 
+    }
 
-// }
+    console.log(`Final score: You: ${userWins} Computer: ${computerWins}`)
+    
+    if(userWins > computerWins) { 
+        console.log("You won the set!"); 
+    } else { 
+        console.log("You lost to a computer!");
+    }
+}
 
-startGameRPS(); 
+game();
