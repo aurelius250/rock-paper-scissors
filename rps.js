@@ -22,23 +22,24 @@ function getComputerChoice() {
     return computedRPS;
 }
 
-function getUserChoice() { 
-    let computeUserRPS = prompt("Enter rock paper or scissors."); 
-    computeUserRPS = computeUserRPS.toLowerCase(); 
-    
-    if(computeUserRPS === "rock" || computeUserRPS === "scissors" || computeUserRPS === "paper") { 
-       return computeUserRPS;
-    } else { 
-    console.log("Please enter a valid input: 'rock', 'paper', or 'scissors'"); 
-    getUserChoice();
-    }
-}
 
-function startGameRPS() { 
-    let computerChoice = getComputerChoice(); 
-    let userChoice = getUserChoice(); 
 
+function startGameRPS(computerChoice, userChoice) { 
     console.log(rpsMatchups(computerChoice, userChoice)); 
+    }
+
+function initialRpsState() { 
+    let computerChoice = getComputerChoice(); 
+    let userChoice; 
+    const userRpsChoice = document.querySelectorAll(".btn"); 
+
+    console.log(`Computer choice is ${computerChoice}`);
+    userRpsChoice.forEach(button => button.addEventListener("click", (e) => { 
+        userChoice = e.target.id; -
+        console.log(userChoice);
+        startGameRPS(computerChoice, userChoice);
+
+    }))
 }
 
 function rpsMatchups(computerChoice, userChoice) { 
@@ -93,8 +94,8 @@ function rpsMatchups(computerChoice, userChoice) {
                 computerWins++;
                 return ("You lose! " + computerChoice + " beats " + userChoice);
             
-            case "scissors": return ("Draw! " + computerChoice + " draws with " + userChoice);
-
+            case "scissors": 
+            return ("Draw! " + computerChoice + " draws with " + userChoice);
             break;
             default: 
             console.log("Incorrect input!");
@@ -103,20 +104,6 @@ function rpsMatchups(computerChoice, userChoice) {
 }
 
 function game(){ 
-    let gameCount = 0; 
-  
-    while(gameCount < 5){ 
-        startGameRPS(); 
-        gameCount++; 
-    }
-
-    console.log(`Final score: You: ${userWins} Computer: ${computerWins}`)
-    
-    if(userWins > computerWins) { 
-        console.log("You won the set!"); 
-    } else { 
-        console.log("You lost to a computer!");
-    }
+    initialRpsState();
 }
-
 game();
