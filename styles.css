@@ -13,13 +13,16 @@ body {
         width: 100%;
         background-position: center;
         height: 100%;
-}
+        display: flex;
+    }
 
 .btn { 
 
 }
 
 .outer-btn-container{ 
+    position:relative; 
+    top: -100px;
     display:flex; 
     margin-top: -5px;
     flex-direction: column;
@@ -57,20 +60,21 @@ body {
 }
 
 #paper { 
+    
+    border: #3e5e73 solid 2px;
     background: url(imgs/pexels-photo-1582782.jpeg);
     background-size: cover;
     padding: 5em; 
     background-position: center;
     margin: auto;
-    border-style: none;
 } 
 
 #scissors { 
+    border: #3e5e73 solid 2px;
     background: url(imgs/scissors.png);
     background-size: cover;
     padding: 5em; 
     background-position: center;
     margin: auto;
-    border-style: none;
     
 }
