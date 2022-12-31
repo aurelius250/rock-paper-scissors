@@ -1,14 +1,76 @@
+* { 
+    box-sizing: border-box;
+}
+
+body { 
+    width: 100%;
+}
+
+.header-img { 
+        background-image: url("/imgs/robot.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        width: 100%;
+        background-position: center;
+        height: 100%;
+}
+
 .btn { 
 
 }
 
-#rock { 
+.outer-btn-container{ 
+    display:flex; 
+    margin-top: -5px;
+    flex-direction: column;
+    align-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    background-color: #d4dbe3
+    ;
+}
 
+.btn-container-text { 
+    color: white;
+    font-size: 2em;
+    display:flex; 
+    justify-content: center;
+    padding-left: 125px;
+    padding-right: 125px;
+    padding-top: 50px;
+}
+.btn-container { 
+ display:flex;
+ padding-top: 50px;
+ justify-content: center;
+ align-content:flex-end
+}
+
+#rock { 
+    background: url(imgs/rock.avif);
+    background-size: cover;
+    padding: 5em; 
+    background-position: center;
+    margin: auto;
+    border: #3e5e73 solid 2px;
 }
 
 #paper { 
+    background: url(imgs/pexels-photo-1582782.jpeg);
+    background-size: cover;
+    padding: 5em; 
+    background-position: center;
+    margin: auto;
+    border-style: none;
 } 
 
 #scissors { 
+    background: url(imgs/scissors.png);
+    background-size: cover;
+    padding: 5em; 
+    background-position: center;
+    margin: auto;
+    border-style: none;
     
 }
