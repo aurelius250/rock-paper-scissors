@@ -22,27 +22,41 @@ function getComputerChoice() {
     return computedRPS;
 }
 
-
-
-function startGameRPS(computerChoice, userChoice) { 
-    console.log(rpsMatchups(computerChoice, userChoice)); 
-    }
-
-function initialRpsState() { 
-    let computerChoice = getComputerChoice(); 
-    let userChoice; 
+function gameStart() { 
     const userRpsChoice = document.querySelectorAll(".btn"); 
-
-    console.log(`Computer choice is ${computerChoice}`);
     userRpsChoice.forEach(button => button.addEventListener("click", (e) => { 
-        userChoice = e.target.id; -
+        let userChoice = e.target.id; -
         console.log(userChoice);
-        startGameRPS(computerChoice, userChoice);
-
+        addResult(outcomeDecider(getComputerChoice(),userChoice));
+        finalResults();
     }))
 }
 
-function rpsMatchups(computerChoice, userChoice) { 
+function finalResults(){ 
+    const finalResultsP = document.querySelector(".pTwo"); 
+    if(userWins == 5){ 
+        finalResultsP.textContent = `Winner! Humanity wins!`;  
+        userWins = 0; 
+        computerWins = 0; 
+        return;
+
+    } else if(computerWins == 5){ 
+        userWins = 0; 
+        computerWins = 0; 
+        finalResultsP.textContent = `Winner! AI wins!`; 
+        return;
+    } else { 
+        finalResultsP.textContent = null;
+    }
+}
+
+function addResult(gamePlayed){ 
+    const p = document.querySelector(".results"); 
+    p.style.whiteSpace = "pre";
+    p.textContent = `${gamePlayed}` + "\r\n" + `Score: Humanity: ${userWins} A.I. Overlords: ${computerWins}`
+}
+
+function outcomeDecider(computerChoice, userChoice) { 
     if(computerChoice === "rock"){ 
         switch(userChoice){ 
             case "rock": 
@@ -66,44 +80,35 @@ function rpsMatchups(computerChoice, userChoice) {
     if(computerChoice === "paper"){ 
         switch(userChoice){ 
             case "rock": 
-            userWins++;
-            return ("You win! " + userChoice + " beats " + computerChoice);
-            break; 
+            computerWins++;
+                return ("You win! " + userChoice + " beats " + computerChoice);
 
             case "paper": 
-            return ("Draw! " + computerChoice + " draws with " + userChoice);
-            break; 
+                return ("Draw! " + computerChoice + " draws with " + userChoice);
             
             case "scissors":
-                computerWins++;
-                return ("You lose! " + computerChoice + " beats " + userChoice);
-            break;
+                userWins++;
+                return ("You win! " + userChoice + " beats " + computerChoice);
             default: 
-            console.log("Incorrect input!");
+                console.log("Incorrect input!");
         }
     }
 
     if(computerChoice === "scissors"){ 
         switch(userChoice){ 
             case "rock": 
-            userWins++;
-            return ("You win! " + userChoice + " beats " + computerChoice); 
-            break; 
-
+                userWins++;
+                return ("You win! " + userChoice + " beats " + computerChoice); 
             case "paper":
                 computerWins++;
                 return ("You lose! " + computerChoice + " beats " + userChoice);
-            
             case "scissors": 
-            return ("Draw! " + computerChoice + " draws with " + userChoice);
-            break;
+                return ("Draw! " + computerChoice + " draws with " + userChoice);
             default: 
-            console.log("Incorrect input!");
+                console.log("Incorrect input!");
         }
     }
 }
 
-function game(){ 
-    initialRpsState();
-}
-game();
+gameStart();  
+
