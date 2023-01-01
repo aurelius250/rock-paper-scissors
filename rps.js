@@ -29,13 +29,14 @@ function gameStart() {
         console.log(userChoice);
         addResult(outcomeDecider(getComputerChoice(),userChoice));
         finalResults();
+
     }))
 }
 
 function finalResults(){ 
-    const finalResultsP = document.querySelector(".pTwo"); 
+    const finalResultsP = document.querySelector(".results"); 
     if(userWins == 5){ 
-        finalResultsP.textContent = `Winner! Humanity wins!`;  
+        finalResultsP.textContent += `Winner! Humanity wins!`;  
         userWins = 0; 
         computerWins = 0; 
         return;
@@ -45,15 +46,20 @@ function finalResults(){
         computerWins = 0; 
         finalResultsP.textContent = `Winner! AI wins!`; 
         return;
-    } else { 
-        finalResultsP.textContent = null;
-    }
+    } 
+    // else { 
+    //     finalResultsP.textContent = undefined;
+    // }
 }
 
 function addResult(gamePlayed){ 
     const p = document.querySelector(".results"); 
+    const scoreBoardHumans = document.querySelector(".humanity-score")
+    const scoreBoardAI = document.querySelector(".ai-score"); 
+    scoreBoardHumans.textContent = userWins; 
+    scoreBoardAI.textContent = computerWins;
     p.style.whiteSpace = "pre";
-    p.textContent = `${gamePlayed}` + "\r\n" + `Score: Humanity: ${userWins} A.I. Overlords: ${computerWins}`
+    p.textContent = `${gamePlayed}` + "\r\n" + `Humanity: ${userWins} A.I. Overlords: ${computerWins}`
 }
 
 function outcomeDecider(computerChoice, userChoice) { 
