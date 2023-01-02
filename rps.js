@@ -35,8 +35,10 @@ function gameStart() {
 
 function finalResults(){ 
     const finalResultsP = document.querySelector(".results"); 
+    finalResultsP.style.whiteSpace = "pre"; 
+
     if(userWins == 5){ 
-        finalResultsP.textContent += `Winner! Humanity wins!`;  
+        finalResultsP.textContent += `Winner! Humanity wins! Free bananas for life!`;  
         userWins = 0; 
         computerWins = 0; 
         return;
@@ -44,7 +46,7 @@ function finalResults(){
     } else if(computerWins == 5){ 
         userWins = 0; 
         computerWins = 0; 
-        finalResultsP.textContent = `Winner! AI wins!`; 
+        finalResultsP.textContent = `Winner! AI wins! You have officially let your entire species down singlehandedly.`; 
         return;
     } 
     // else { 
@@ -87,7 +89,7 @@ function outcomeDecider(computerChoice, userChoice) {
         switch(userChoice){ 
             case "rock": 
             computerWins++;
-                return ("You win! " + userChoice + " beats " + computerChoice);
+                return ("You lose! " + computerChoice + " beats " + userChoice);
 
             case "paper": 
                 return ("Draw! " + computerChoice + " draws with " + userChoice);
