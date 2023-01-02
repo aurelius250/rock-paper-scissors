@@ -59,7 +59,7 @@ function addResult(gamePlayed){
     scoreBoardHumans.textContent = userWins; 
     scoreBoardAI.textContent = computerWins;
     p.style.whiteSpace = "pre";
-    p.textContent = `${gamePlayed}` + "\r\n" + `Humanity: ${userWins} A.I. Overlords: ${computerWins}`
+    p.textContent = `${gamePlayed}` + "\r\n" + `Humanity: ${userWins} A.I. Overlords: ${computerWins} `
 }
 
 function outcomeDecider(computerChoice, userChoice) { 
