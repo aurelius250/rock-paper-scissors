@@ -5,13 +5,28 @@
 body { 
     width: 100%;
 }
-
+.scoreboard-div { 
+    display: flex; 
+    text-align: center;
+    font-size: 2em;
+    justify-content: space-evenly;
+}
 .ai-score { 
     font-size: 3em;
+    border: double white 8px;
+    display:inline-block; 
+    margin-top: 0;
+    padding: 0.5em;
+
 }
 
 .humanity-score { 
+    border: double white 8px;
     font-size: 3em;
+    padding: 0.5em; 
+    margin-bottom: 0.5em;
+    margin-top: 0;
+    display:inline-block;
 }
 .header-img { 
         background-image: url("/imgs/robot.jpg");
@@ -25,13 +40,11 @@ body {
     }
 
 .results { 
-    padding-top: 50px;
     text-align: center;
     display:flex; 
     justify-content: center;
 }
 .results-div { 
-    display: flex; 
     font-size: 2em; 
     justify-content: center;
     align-content: center;
@@ -46,19 +59,13 @@ body {
     margin-top: -5px;
     flex-direction: column;
     align-content: space-evenly;
-    padding-top: 32px;
-    padding-bottom: 100px;
+    padding-top: 16px;
+    padding-bottom: 50px;
     width: 100%;
-    height: 800px;
     background-color: #d4dbe3;
 }
 
-.scoreboard-div { 
-    display: flex; 
-    text-align: center;
-    font-size: 2em;
-    justify-content: space-evenly;
-}
+
 .btn-container-text { 
     color: green;
     font-size: 2em;

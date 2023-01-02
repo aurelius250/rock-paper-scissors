@@ -38,20 +38,17 @@ function finalResults(){
     finalResultsP.style.whiteSpace = "pre"; 
 
     if(userWins == 5){ 
-        finalResultsP.textContent += `Winner! Humanity wins! Free bananas for life!`;  
+        finalResultsP.textContent = `Winner! Humanity wins! World peace achieved!`;
         userWins = 0; 
         computerWins = 0; 
         return;
-
-    } else if(computerWins == 5){ 
+    }
+    else if(computerWins == 5){ 
         userWins = 0; 
         computerWins = 0; 
-        finalResultsP.textContent = `Winner! AI wins! You have officially let your entire species down singlehandedly.`; 
+        finalResultsP.textContent = `You Lose! AI wins! You have officially let your entire species down singlehandedly!`; 
         return;
     } 
-    // else { 
-    //     finalResultsP.textContent = undefined;
-    // }
 }
 
 function addResult(gamePlayed){ 
@@ -61,7 +58,7 @@ function addResult(gamePlayed){
     scoreBoardHumans.textContent = userWins; 
     scoreBoardAI.textContent = computerWins;
     p.style.whiteSpace = "pre";
-    p.textContent = `${gamePlayed}` + "\r\n" + `Humanity: ${userWins} A.I. Overlords: ${computerWins} `
+    p.textContent = `${gamePlayed}` 
 }
 
 function outcomeDecider(computerChoice, userChoice) { 
